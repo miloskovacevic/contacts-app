@@ -7,10 +7,7 @@ var bodyParser = require('body-parser');
 var db = new Bourne('./data.json');
 var router = express.Router();
 
-router.use(function(req, res, next){
-    if(!req.user) req.user = { id : 1};
-    next();
-    })
+router
       .use(bodyParser.json())
       .route('/contact')
         .get(function (req, res) {

@@ -4,15 +4,14 @@ var app = express();
 var users = require('./accounts');
 
 app.use(express.static('public'))
-    .use(users)
+   .use(users)
    .use('/api', api)
    .get('*', function(req, res){
-        if(req.user){
+        if(!req.user){
             res.redirect('/login')
         } else {
             res.sendfile('public/main.html');
         }
-
     })
 .listen(3000, function () {
         console.log('Listening on port 3000...');
